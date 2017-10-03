@@ -1,0 +1,7 @@
+[
+	{"id":1, "product":"sofa", "type":"living room"},
+	{"id":2, "product":"table", "type":"dinning room"},
+	{"id":3, "product":"bed", "type":"bedroom room"},
+	{"id":4, "product":"mattres", "type":"bedroom room"}
+]
+

@@ -13,29 +13,28 @@
  *  implied.  See the License for the specific language governing
  *  permissions and limitations under the License.
  */
-package io.fabric8.quickstarts.camel;
+package com.example.apache.camel;
 
-import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.servlet.CamelHttpTransportServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
 
-/**
- * A spring-boot application that includes a Camel route builder to setup the Camel routes
- */
 @SpringBootApplication
 @ImportResource({"classpath:spring/camel-context.xml"})
-public class Application extends RouteBuilder {
-
-    // must have a main method spring-boot can run
+public class Application{
+	
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-
-    @Override
-    public void configure() throws Exception {
-        from("timer://foo?period=5000")
-            .setBody().constant("Hello World")
-            .log(">>> ${body}");
-    }
+	
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean() {
+	    ServletRegistrationBean servlet = new ServletRegistrationBean(new CamelHttpTransportServlet(), "/camel/*");
+	    servlet.setName("CamelServlet");
+	    return servlet;
+	}
+    
 }

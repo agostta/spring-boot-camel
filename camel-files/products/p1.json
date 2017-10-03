@@ -1,0 +1,6 @@
+{
+	"id": 1,
+	"product": "sofa",
+	"type": "living room",
+	"foo": { "id": 33 }
+}
