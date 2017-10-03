@@ -29,6 +29,7 @@ public class Application{
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+<<<<<<< HEAD:src/main/java/com/example/apache/camel/Application.java
 	
 	@Bean
 	public ServletRegistrationBean servletRegistrationBean() {
@@ -37,4 +38,13 @@ public class Application{
 	    return servlet;
 	}
     
+=======
+
+    @Override
+    public void configure() throws Exception {
+        from("timer://foo?period=5000")
+            .setBody().constant("Hello World2")
+            .log(">>> ${body}");
+    }
+>>>>>>> 96cde76d2c941834ad27d3b9d927e7ad3ec50454:src/main/java/io/fabric8/quickstarts/camel/Application.java
 }
